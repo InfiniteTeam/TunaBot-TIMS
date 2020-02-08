@@ -8,6 +8,19 @@ window.title('TIMS - 참치봇 통합 관리 시스템')
 window.geometry('960x540+200+200')
 window.resizable(False, False)
 
+# 탭 설정
+NotebookTabs = ttk.Notebook(window, width=600, height=400)
+NotebookTabs.place(x=350, y=40)
+
+# 봇 로그 탭(Notebook1) 추가
+Notebook1 = tk.Frame(window)
+NotebookTabs.add(Notebook1, text="봇 로그")
+TextBotLog = tk.Text(Notebook1, width=600, height=400)
+for x in range(40):
+    TextBotLog.insert(tk.CURRENT, "SANS\n")
+TextBotLog.config(state='disabled')
+TextBotLog.pack()
+
 # 상단 배너 설정
 img = tk.PhotoImage(file='./resources/tims-label.png')
 LabelBanner = tk.Label(window, image=img)
@@ -19,11 +32,5 @@ style.configure('TButton', width=20)
 
 ButtonBotStart = ttk.Button(window, text="봇 시작", style='TButton')
 ButtonBotStart.place(x=0, y=30)
-
-# 봇 로그 상자 설정
-TextBotLog = tk.Text(window)
-TextBotLog.insert(tk.CURRENT, 'ㅎㅇㅎㅇ\n')
-TextBotLog.config(state='disable')
-TextBotLog.pack()
 
 window.mainloop()
