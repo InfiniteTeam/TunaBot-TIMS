@@ -18,9 +18,14 @@ NotebookTabs.place(x=250, y=40)
 # 봇 로그 탭(Notebook1) 추가
 Notebook1 = tk.Frame(window)
 NotebookTabs.add(Notebook1, text="봇 로그")
-TextBotLog = tk.Text(Notebook1, width=700, height=430)
-TextBotLog.config(state='disabled')
+#font = tk.font.Font(family='돋움체', size=10, color='white')
+TextBotLog = tk.Text(Notebook1, width=700, height=430, background='gray15', foreground='white')
 TextBotLog.pack()
+for x in range(40):
+    TextBotLog.insert(tk.END, 'SANS\n')
+TextBotLog.config(state='disabled')
+
+# 콘솔 탭(NoteBook2) 추가
 
 # 상단 배너 설정
 imgLabelBanner = tk.PhotoImage(file='./resources/tims-label.png')
@@ -32,28 +37,18 @@ imgLabelLogo = tk.PhotoImage(file='./resources/TunaBot-text.png')
 LabelLogo = tk.Label(window, image=imgLabelLogo)
 LabelLogo.place(x=5, y=35)
 
-# 좌측 로고 By InfiniteTEAM 설정
-font = tk.font.Font(family='맑은 고딕', size=11)
-LabelBy = tk.Label(window, text='By InfiniteTEAM', font=font)
-LabelBy.place(x=110, y=50)
-
-# 봇 토큰 라벨 설정
-LabelBotToken = tk.Label(window, text='봇 토큰:')
-LabelBotToken.place(x=10, y=90)
+# 좌측 로고 개발자 라벨
+font = tk.font.Font(family='맑은 고딕', size=10)
+LabelBy = tk.Label(window, text='By ArpaAP\nin InfiniteTEAM', font=font, justify='left')
+LabelBy.place(x=110, y=40)
 
 # 봇 토큰 입력칸 설정
+LabelBotToken = tk.Label(window, text='봇 토큰:')
+LabelBotToken.place(x=10, y=90)
 EntryBotToken = ttk.Entry(window, show='●')
 EntryBotToken.place(x=80, y=90, width=162)
 
-# 봇이 여기서 실질적으로 실행됩니다.
-'''
-    if platform.system() == 'Windows':
-        os.system('cd {}'.format(os.getcwd()))
-        output = os.popen('python _bot.py').read()
-        TextBotLog.config(state='normal')
-        TextBotLog.insert(tk.END, output)
-        TextBotLog.config(state='normal')
-'''
+# =============== 봇 코드 시작 ===============
 client = discord.Client()
 
 @client.event
@@ -65,6 +60,8 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('hu'):
         await message.channel.send('dwdw')
+
+# =============== 봇 코드 종료 ===============
 
 def botThread():
     client.run(EntryBotToken.get())
