@@ -41,18 +41,18 @@ LabelBotToken = tk.Label(window, text='봇 토큰:')
 LabelBotToken.place(x=10, y=80)
 
 # 봇 토큰 입력칸 설정
-EntryBotToken = ttk.Entry(window, width=22, show='●')
-EntryBotToken.place(x=80, y=80)
+EntryBotToken = ttk.Entry(window, show='●')
+EntryBotToken.place(x=80, y=80, width=162)
 
 # 봇 소스 경로 라벨 설정
 LabelBotSource = tk.Label(window, text='봇 소스:')
 LabelBotSource.place(x=10, y=110)
 
 # 봇 소스 경로 입력칸 설정
-EntryBotSource = ttk.Entry(window, width=18)
+EntryBotSource = ttk.Entry(window)
 v = tk.StringVar()
 EntryBotSource.config(textvariable=v)
-EntryBotSource.place(x=80, y=110)
+EntryBotSource.place(x=80, y=110, width=134)
 
 def openFileDialog():
     file = tk.filedialog.askopenfile(window)
@@ -61,7 +61,7 @@ def openFileDialog():
 
 # 봇 소스 경로 선택창 열기 버튼
 ButtonBotSource = ttk.Button(window, text='...', command=openFileDialog)
-ButtonBotSource.place(x=215, y=110, width= 26, height=21)
+ButtonBotSource.place(x=217, y=110, width= 26, height=21)
 
 # 봇 시작 버튼 설정
 style = ttk.Style()
