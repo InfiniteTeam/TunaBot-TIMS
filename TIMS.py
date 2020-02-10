@@ -1,8 +1,11 @@
+# -*-coding: utf-8-*-
+
 import tkinter as tk
 from tkinter import ttk, font, filedialog, messagebox
 import threading
 import os, platform, sys
 import discord
+import subprocess
 
 window = tk.Tk()
 
@@ -17,20 +20,40 @@ NotebookTabs.place(x=250, y=40)
 
 # 봇 로그 탭(Notebook1) 추가
 Notebook1 = tk.Frame(window)
-NotebookTabs.add(Notebook1, text="봇 로그")
-#font = tk.font.Font(family='돋움체', size=10, color='white')
-TextBotLog = tk.Text(Notebook1, width=700, height=430, background='gray15', foreground='white')
-TextBotLog.pack()
+NotebookTabs.add(Notebook1, text='봇 로그')
+
+ScrollbarBotLog = ttk.Scrollbar(Notebook1)
+ScrollbarBotLog.pack(side='right', fill='y')
+
+font = tk.font.Font(family='굴림체', size=9)
+TextBotLog = tk.Text(Notebook1, yscrollcommand=ScrollbarBotLog.set, width=700, height=430, background='gray15', foreground='white', font=font)
+TextBotLog.pack(side='left')
+
+ScrollbarBotLog['command'] = TextBotLog.yview
+
+TextBotLog.insert(tk.END, '와아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아새애애애애애애애애애애애애애애애애애애앤즈으으으으으으으으으으으으으으은')
 for x in range(40):
     TextBotLog.insert(tk.END, 'SANS\n')
 TextBotLog.config(state='disabled')
 
 # 콘솔 탭(NoteBook2) 추가
+Notebook2 = tk.Frame(window)
+if platform.system() == 'Windows':
+    NotebookTabs.add(Notebook2, text='명령 프롬프트')
+elif platform.system() == 'Linux':
+    NotebookTabs.add(Notebook2, text='터미널')
+ScrollbarConsole = tk.Scrollbar(Notebook2)
+ScrollbarConsole.pack(side='right', fill='y')
+TextConsole = tk.Text(Notebook2, width=700, height=430,
+background='gray15', foreground='white', font=font, yscrollcommand=ScrollbarConsole.set)
+TextConsole.pack()
+
+TextConsole.insert(tk.END, )
 
 # 상단 배너 설정
 imgLabelBanner = tk.PhotoImage(file='./resources/tims-label.png')
 LabelBanner = tk.Label(window, image=imgLabelBanner)
-LabelBanner.place(x=-5, y=0)
+LabelBanner.place(x=-5, y=-1)
 
 # 좌측 로고 설정
 imgLabelLogo = tk.PhotoImage(file='./resources/TunaBot-text.png')
