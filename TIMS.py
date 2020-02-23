@@ -48,7 +48,7 @@ TextConsole = tk.Text(Notebook2, width=700, height=430,
 background='gray15', foreground='white', font=font, yscrollcommand=ScrollbarConsole.set)
 TextConsole.pack()
 
-TextConsole.insert(tk.END, )
+#TextConsole.insert(tk.END, )
 
 # 상단 배너 설정
 imgLabelBanner = tk.PhotoImage(file='./resources/tims-label.png')
